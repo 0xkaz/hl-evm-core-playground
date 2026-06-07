@@ -25,7 +25,7 @@ hl-evm-core-playground/
 - **CoreWriter** (`/corewriter`) — reference of all 15 actions, plus live senders for #1 limit order, #6 spot send, #7 USD class transfer. The wallet signs and sends directly to HyperEVM; the page switches chains, shows the encoded action, and measures EVM confirmation (and for #7, the async L1 settle lag).
 - **Bridge** (`/bridge`) — move HYPE between HyperCore and the EVM (fund EVM gas) via the HYPE system address `0x222…2`, both directions, with cross-layer settle timing.
 - **System** (`/system`) — the full map: L1Read precompiles, the CoreWriter contract, and token system addresses.
-- Reads go **directly** from the browser to HL's public RPC/info (CORS open); writes are signed by the wallet directly. The server only serves static assets. **Defaults to mainnet** (reads show real data); writes warn to use testnet.
+- Live precompile reads go **directly** from the browser to HL's public RPC (CORS open); writes are signed and sent by the wallet directly. The Worker serves static assets and one cached endpoint — `/api/meta`, a 2-min cache of the asset-list metadata. No keys, signatures, or transactions ever touch the server. **Defaults to mainnet** (reads show real data); writes warn to use testnet.
 
 ## Reads vs writes
 
