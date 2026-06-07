@@ -2,6 +2,8 @@
 
 A working demo of what HyperEVM's **L1Read precompiles** (read HyperCore state) and the **CoreWriter system contract** (write actions to HyperCore) can and cannot do. Runnable code plus a web UI. Reads work on both Hyperliquid mainnet and testnet (the UI defaults to mainnet); writes are wallet-signed and testnet is recommended. Live deployment: https://hl-evm.0xkaz.com
 
+![Explore — the landing page with L1Read / CoreWriter / Bridge / System feature cards](images/ss03.png)
+
 ## Layout
 
 ```text
@@ -22,8 +24,12 @@ hl-evm-core-playground/
 - **Detail** (`/perp/:id`, `/spot/:id`, `/token/:id`) — reads only that asset's related precompiles, batched into one JSON-RPC request, with the raw `eth_call` to/data shown.
 - **Account** (`/account`) — connect a wallet; reads that account's HyperCore state (no placeholder address).
 - **Orders** (`/orders`) — place a limit order (asset picker, live price, bbo, holdings) and see / cancel resting orders, all on one page. Place = CoreWriter #1, cancel = #10; list via info API `openOrders`.
+
+  ![Orders — place and cancel resting limit orders on one page](images/ss01.png)
 - **CoreWriter** (`/corewriter`) — reference of all 15 actions, plus live senders for #1 limit order, #6 spot send, #7 USD class transfer. The wallet signs and sends directly to HyperEVM; the page switches chains, shows the encoded action, and measures EVM confirmation (and for #7, the async L1 settle lag).
 - **Bridge** (`/bridge`) — move HYPE between HyperCore and the EVM (fund EVM gas) via the HYPE system address `0x222…2`, both directions, with cross-layer settle timing.
+
+  ![Bridge — move HYPE between HyperCore and the EVM in both directions](images/ss02.png)
 - **System** (`/system`) — the full map: L1Read precompiles, the CoreWriter contract, and token system addresses.
 - Live precompile reads go **directly** from the browser to HL's public RPC (CORS open); writes are signed and sent by the wallet directly. The Worker serves static assets and one cached endpoint — `/api/meta`, a 2-min cache of the asset-list metadata. No keys, signatures, or transactions ever touch the server. **Defaults to mainnet** (reads show real data); writes warn to use testnet.
 

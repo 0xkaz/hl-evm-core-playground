@@ -2,6 +2,8 @@
 
 HyperEVM の **L1Read プリコンパイル**（HyperCore の状態を読む）と **CoreWriter システムコントラクト**（HyperCore へアクションを書く）で、何ができて何ができないかを示す動作デモ。実行可能なコードと Web UI 付き。読み取りは Hyperliquid mainnet/testnet 両方で動作（UI のデフォルトは mainnet）、書き込みはウォレット署名で testnet 推奨。公開デプロイ: https://hl-evm.0xkaz.com
 
+![Explore — L1Read / CoreWriter / Bridge / System の機能カードを並べたランディングページ](images/ss03.png)
+
 ## 構成
 
 ```text
@@ -22,8 +24,12 @@ hl-evm-core-playground/
 - **詳細** (`/perp/:id`, `/spot/:id`, `/token/:id`) — そのアセット関連の precompile だけを JSON-RPC バッチで1リクエストに。生の `eth_call` の to/data も表示。
 - **Account** (`/account`) — ウォレット接続し、そのアカウントの HyperCore 状態を読む（プレースホルダアドレス無し）。
 - **Orders** (`/orders`) — 指値注文の発注（資産ピッカー・現在価格・bbo・保有表示）と未約定注文の一覧/キャンセルを1画面で。発注=CoreWriter #1、キャンセル=#10、一覧=info API `openOrders`。
+
+  ![Orders — 指値注文の発注と未約定注文のキャンセルを1画面で](images/ss01.png)
 - **CoreWriter** (`/corewriter`) — 全15アクションの一覧に加え、#1 指値注文・#6 spot 送金・#7 USD class transfer の実送信フォーム。ウォレットが直接 HyperEVM に署名・送信し、チェーン切替・エンコード結果表示・EVM 確定時間（#7 は非同期 L1 着金ラグも）を計測。
 - **Bridge** (`/bridge`) — HYPE を HyperCore ⇄ EVM で移動（EVM ガス調達）。HYPE システムアドレス `0x222…2` 経由、両方向、レイヤー間着金時間も計測。
+
+  ![Bridge — HYPE を HyperCore ⇄ EVM で双方向に移動](images/ss02.png)
 - **System** (`/system`) — 全体マップ: L1Read プリコンパイル、CoreWriter コントラクト、トークンのシステムアドレス。
 - ライブな precompile 読み取りはブラウザから HL 公開 RPC へ **直接**（CORS 開放）、書き込みはウォレットが直接署名・送信。Worker は静的アセットと1つのキャッシュエンドポイント `/api/meta`（アセット一覧メタの2分キャッシュ）のみを配信。鍵・署名・トランザクションはサーバを一切通らない。**デフォルトは mainnet**（読み取りは実データ）、書き込みは testnet 推奨の警告あり。
 
