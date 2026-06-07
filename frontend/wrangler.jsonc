@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hl-evm-core-playground",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2025-06-06",
+  "routes": [{ "pattern": "hl-evm.0xkaz.com", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

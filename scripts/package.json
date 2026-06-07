@@ -1,0 +1,20 @@
+{
+  "name": "hl-evm-core-playground-scripts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "L1Read (read) and CoreWriter (write) demo probes against Hyperliquid testnet.",
+  "scripts": {
+    "demo:l1read": "tsx src/demo-l1read.ts",
+    "demo:corewriter": "tsx src/demo-corewriter.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

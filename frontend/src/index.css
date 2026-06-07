@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Hyperliquid-flavored palette. We retint the Tailwind scales the app already
+   uses (emerald = accent, zinc = surfaces) toward HL's mint-on-black look, so
+   components don't need per-class changes. HL accent ≈ #50d2c1 / #97fce4. */
+@theme {
+  /* Accent (buttons, success, highlights) -> HL mint */
+  --color-emerald-300: #b8fdee;
+  --color-emerald-400: #97fce4;
+  --color-emerald-500: #50d2c1;
+  --color-emerald-600: #34b3a4;
+  --color-emerald-700: #1f8b80;
+  --color-emerald-900: #0c2a27;
+  --color-emerald-950: #07191a;
+
+  /* Links / addresses -> a slightly lighter teal so they read as interactive */
+  --color-sky-400: #5fd3e6;
+
+  /* Surfaces -> near-black with a faint teal cast, like the HL app */
+  --color-zinc-950: #07100f;
+  --color-zinc-900: #0e1817;
+  --color-zinc-800: #1b2a28;
+  --color-zinc-700: #2a3d3a;
+}
