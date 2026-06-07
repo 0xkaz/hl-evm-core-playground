@@ -110,6 +110,10 @@ export function Layout({ children }: { children: ReactNode }) {
         <footer className="mt-12 border-t border-zinc-800 pt-4 text-xs text-zinc-500">
           <span>HyperEVM Playground — a demo of operating HyperCore from the EVM.</span>
           <span className="mx-2 text-zinc-700">·</span>
+          <a href="https://github.com/0xkaz/hl-evm-core-playground" target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
+            Source on GitHub
+          </a>
+          <span className="mx-2 text-zinc-700">·</span>
           <span>
             Related:{" "}
             <a href="https://hl-listing-calc.0xkaz.com/" target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">
